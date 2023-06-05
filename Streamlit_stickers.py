@@ -29,7 +29,7 @@ fig.update_layout(
 )
 
 # Create two columns with specified width ratios
-col1, col2 = st.beta_columns((3,2))
+col1, col2 = st.columns((3,2))
 
 # Show map in the left column
 col1.plotly_chart(fig)

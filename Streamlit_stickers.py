@@ -28,15 +28,20 @@ fig.update_layout(
     ),
 )
 
-# Create two columns with specified width ratios
-col1, col2 = st.columns((3,2))
+# Create two columns
+col1, col2 = st.columns([3,2])
 
 # Show map in the left column
 col1.plotly_chart(fig)
 
-# Select location and show image in the right column
-selected_location = col2.selectbox('Select a location', df['Location'])
+# Create a container in the right column
+container = col2.container()
 
-if col2.button('Show Image'):
+# Create selection box and button in the container
+selected_location = container.selectbox('Select a location', df['Location'])
+show_button = container.button('Show Image')
+
+# Show image below the container if the button is clicked
+if show_button:
     selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
-    col2.image(selected_image, width=400) # Control the width of the image
+    st.image(selected_image, width=400) # Control the width of the image

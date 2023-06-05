@@ -29,16 +29,14 @@ fig.update_layout(
 )
 
 # Create a layout with two columns
-layout = st.container()
+col1, col2 = st.columns([5,2])
 
-with layout:
-    col1, col2 = st.columns([5,2])
+# Show map in the left column
+col1.plotly_chart(fig, use_container_width=True)
 
-    # Show map in the left column
-    col1.plotly_chart(fig)
+# Create selection box and button in the right column
+selected_location = col2.selectbox('Select a location', df['Location'])
+if col2.button('Show Image'):
+    selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
+    col2.image(selected_image, width=200) # Control the width of the image
 
-    # Create selection box and button in the right column
-    selected_location = col2.selectbox('Select a location', df['Location'])
-    if col2.button('Show Image'):
-        selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
-        col2.image(selected_image, width=200) # Control the width of the image

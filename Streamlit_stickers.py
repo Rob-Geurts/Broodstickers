@@ -28,11 +28,15 @@ fig.update_layout(
     ),
 )
 
-# Streamlit code
-st.plotly_chart(fig)
+# Create two columns
+col1, col2 = st.beta_columns(2)
 
-selected_location = st.selectbox('Select a location', df['Location'])
+# Show map in the left column
+col1.plotly_chart(fig)
 
-if st.button('Show Image'):
+# Select location and show image in the right column
+selected_location = col2.selectbox('Select a location', df['Location'])
+
+if col2.button('Show Image'):
     selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
-    st.image(selected_image)
+    col2.image(selected_image)

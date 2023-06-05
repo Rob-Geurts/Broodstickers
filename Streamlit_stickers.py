@@ -28,8 +28,8 @@ fig.update_layout(
     ),
 )
 
-# Create two columns
-col1, col2 = st.columns(2)
+# Create two columns with specified width ratios
+col1, col2 = st.beta_columns((3,2))
 
 # Show map in the left column
 col1.plotly_chart(fig)
@@ -39,4 +39,4 @@ selected_location = col2.selectbox('Select a location', df['Location'])
 
 if col2.button('Show Image'):
     selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
-    col2.image(selected_image)
+    col2.image(selected_image, width=400) # Control the width of the image

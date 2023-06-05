@@ -19,6 +19,7 @@ fig.update_layout(
     mapbox_style="open-street-map",
     geo_scope='world',
     autosize=True,
+    height = 800,
     mapbox=dict(
         center=dict(
             lat=df['Latitude'].mean(),
@@ -38,5 +39,5 @@ col1.plotly_chart(fig, use_container_width=True)
 selected_location = col2.selectbox('Select a location', df['Location'])
 if col2.button('Show Image'):
     selected_image = df[df['Location'] == selected_location]['ImageURL'].values[0]
-    col2.image(selected_image, width=200) # Control the width of the image
+    col2.image(selected_image, width=300) # Control the width of the image
 

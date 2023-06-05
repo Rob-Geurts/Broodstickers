@@ -19,7 +19,7 @@ fig.update_layout(
     mapbox_style="open-street-map",
     geo_scope='world',
     autosize=True,
-    height = 800,
+    height = 600,
     mapbox=dict(
         center=dict(
             lat=df['Latitude'].mean(),

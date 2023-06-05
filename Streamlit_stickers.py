@@ -30,7 +30,7 @@ fig.update_layout(
 )
 
 # Set wide layout
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="B.R.O.O.D. is overal")
 
 # Create a layout with two columns
 col1, col2 = st.columns([5,2])
